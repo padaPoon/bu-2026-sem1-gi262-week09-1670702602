@@ -14,7 +14,7 @@ namespace Solution
 
         public bool isAutoMoving = false; // Flag to control auto-movement
 
-        public override void SetUP()
+         public override void SetUP()
         {
             base.SetUP();
             PrintInfo();
@@ -22,8 +22,8 @@ namespace Solution
             inventory = GetComponent<Inventory>();
             moveAction = InputSystem.actions.FindAction("Move");
             fireAction = InputSystem.actions.FindAction("Attack");
-        }
-
+            actionHistoryManager.SaveStateForUndo(new Vector2(positionX, positionY));
+     }
         public void Update()
         {
             // Manual input is only processed if not in auto-move mode
@@ -71,7 +71,7 @@ namespace Solution
             base.Move(direction);
             mapGenerator.MoveEnemies();
             // Save the state AFTER the move
-      
+            actionHistoryManager.SaveStateForUndo(new Vector2(positionX, positionY));
         }
 
         public void UseFireStorm()

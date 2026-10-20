@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assignment
 {
@@ -15,12 +16,40 @@ namespace Assignment
 
         public (int Count, int Popped, int Peek, int CountAfterPeek) LCT01_StackSyntax()
         {
-            throw new NotImplementedException();
+            Stack<int> stack = new Stack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            int count = stack.Count;
+            Debug.Log($"Count: {count}");
+            int popped = stack.Pop();
+            Debug.Log($"Popped: {popped}");
+            int peek = stack.Peek();
+            Debug.Log($"Peek: {peek}");
+            int countAfterPeek = stack.Count;
+            Debug.Log($"Count after Peek: {countAfterPeek}");
+
+            return (count, popped, peek, countAfterPeek);
         }
 
         public (int Count, int Dequeued, int Peek, int CountAfterPeek) LCT02_QueueSyntax()
         {
-            throw new NotImplementedException();
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+
+            int count = queue.Count;
+            Debug.Log($"Count: {count}");
+            int dequeued = queue.Dequeue();
+            Debug.Log($"Dequeued: {dequeued}");
+            int peek = queue.Peek();
+            Debug.Log($"Peek: {peek}");
+            int countAfterPeek = queue.Count;
+            Debug.Log($"Count after Peek: {countAfterPeek}");
+
+            return (count, dequeued, peek, countAfterPeek);
         }
 
         public string[] LCT03_ActionStack()
@@ -28,7 +57,20 @@ namespace Assignment
             Action action1 = new Action { Name = "Action 1" };
             Action action2 = new Action { Name = "Action 2" };
             Action action3 = new Action { Name = "Action 3" };
-            throw new NotImplementedException();
+            
+            Stack<Action> stack = new Stack<Action>();
+            stack.Push(action1);
+            stack.Push(action2);
+            stack.Push(action3);
+
+            string[] poppedActions = new string[3];
+            for (int i = 0; i < 3; i++)
+            {
+                var poppedAction = stack.Pop();
+                poppedActions[i] = poppedAction.Name;
+                Debug.Log($"Popped: {poppedAction.Name}");
+            }
+            return poppedActions;
         }
 
         public string[] LCT04_ActionQueue()
@@ -36,7 +78,20 @@ namespace Assignment
             Action action1 = new Action { Name = "Action 1" };
             Action action2 = new Action { Name = "Action 2" };
             Action action3 = new Action { Name = "Action 3" };
-            throw new NotImplementedException();
+            
+            Queue<Action> queue = new Queue<Action>();
+            queue.Enqueue(action1);
+            queue.Enqueue(action2);
+            queue.Enqueue(action3);
+
+            string[] dequeuedActions = new string[3];
+            for (int i = 0; i < 3; i++)
+            {
+                var dequeuedAction = queue.Dequeue();
+                dequeuedActions[i] = dequeuedAction.Name;
+                Debug.Log($"Dequeued: {dequeuedAction.Name}");
+            }
+            return dequeuedActions;
         }
 
         #endregion
